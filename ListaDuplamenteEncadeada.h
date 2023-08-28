@@ -61,5 +61,11 @@ void leituraArquivo (string nomeArq){
     arqSeq.close();
 }
 
+template<typename T>
+void criaLista (ListaDuplamenteEncadeada<T> &lista){
+    lista.cardinalidade = 0;
+    lista.inicio = NULL;
+    lista.fim = NULL;
+}
 
 #endif // LISTADUPLAMENTEENCADEADA_H_INCLUDED
