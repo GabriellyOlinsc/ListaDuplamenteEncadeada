@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1693171273 source:c:\users\gabri\onedrive\documentos\ciência da computação\codebloks\periodo 3\estrutura de dados\listaduplamenteencadeada_m1\main.cpp
+	<iostream>
+	"ListaDuplamenteEncadeada.h"
+
+1693171286 c:\users\gabri\onedrive\documentos\ciência da computação\codebloks\periodo 3\estrutura de dados\listaduplamenteencadeada_m1\listaduplamenteencadeada.h
+	<iostream>
+	<fstream>
+
