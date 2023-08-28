@@ -10,6 +10,5 @@ int main() {
 
     leituraArquivo(nomeArq);
 
-
     return 0;
 }

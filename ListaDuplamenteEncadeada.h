@@ -5,6 +5,21 @@
 #include <fstream>
 using namespace std;
 
+template<typename T>
+struct Nodo{
+    T elemento;
+    Nodo<T>* anterior;
+    Nodo<T>* proximo;
+};
+
+template<typename T>
+struct ListaDuplamenteEncadeada{
+    int cardinalidade;
+    Nodo<T>* inicio;
+    Nodo<T>* fim;
+};
+
+//template<typename T>
 void leituraArquivo (string nomeArq){
     string palavra="";
     char ch;
@@ -16,7 +31,7 @@ void leituraArquivo (string nomeArq){
         exit(0);
     }
 
-    while(arqSeq.get(ch)){
+    while(getline(arqSeq,palavra)){
         if(ch == ' ' or ch == '\n'){
             switch (coluna){
                 case 0:
@@ -45,5 +60,6 @@ void leituraArquivo (string nomeArq){
     }
     arqSeq.close();
 }
+
 
 #endif // LISTADUPLAMENTEENCADEADA_H_INCLUDED
