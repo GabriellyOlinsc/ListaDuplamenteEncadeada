@@ -31,7 +31,7 @@ void leituraArquivo (string nomeArq){
         exit(0);
     }
 
-    while(getline(arqSeq,palavra)){
+    while (arqSeq.get(ch)){
         if(ch == ' ' or ch == '\n'){
             switch (coluna){
                 case 0:
