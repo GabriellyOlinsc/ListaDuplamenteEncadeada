@@ -126,19 +126,5 @@ void exibeLista(ListaDuplamenteEncadeada<T> lista)
     cout << endl;
 }
 
-template<typename T>
-void destroi(ListaDuplamenteEncadeada<T> &lista)
-{
-    Nodo<T> *p;
-    while (lista.inicio != NULL)
-    {
-        p = lista.inicio;
-        lista.inicio = lista.inicio->proximo;
-        delete p;
-    }
-    lista.cardinalidade = 0;
-}
-
-
 
 #endif // LISTADUPLAMENTEENCADEADA_H_INCLUDED
