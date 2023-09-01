@@ -16,3 +16,13 @@
 	<fstream>
 	<cstring>
 
+1693526302 source:c:\users\8186839\downloads\m1\listaduplamenteencadeada\main.cpp
+	<iostream>
+	"ListaDuplamenteEncadeada.h"
+
+1693526394 c:\users\8186839\downloads\m1\listaduplamenteencadeada\listaduplamenteencadeada.h
+	<iostream>
+	<fstream>
+	<cstring>
+	<cstdlib>
+

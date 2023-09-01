@@ -20,8 +20,9 @@ struct ListaDuplamenteEncadeada{
     Nodo<T>* inicio;
     Nodo<T>* fim;
 };
-void leituraArquivo (string nomeArq){
-    string palavra="";
+template<typename T>
+void leituraArquivo (ListaDuplamenteEncadeada<T> &lista, string nomeArq){
+    T palavra;
     char ch;
     int coluna = 0;
 
@@ -36,19 +37,23 @@ void leituraArquivo (string nomeArq){
             switch (coluna){
                 case 0:
                     cout<<"\n\nnumero de voo : "<<palavra<<endl;
-                    //aqui fica o insereNaLista1
+                    insereNaLista(lista, palavra);
+                    // insere lista1
                     break;
                 case 1:
                     cout<<"local de origem: "<< palavra<<endl;
-                    //aqui fica o insereNaLista2
+                    insereNaLista(lista, palavra);
+                    // insere lista2
                     break;
                 case 2:
                     cout<<"local de destino: "<< palavra<<endl;
-                    //aqui fica o insereNaLista3
+                    insereNaLista(lista, palavra);
+                    // insere lista3
                     break;
                 case 3:
                     cout<<"numero de lugares disponiveis: "<< palavra<<endl;
-                    //insereNaLista4
+                    insereNaLista(lista, palavra);
+                    // insere lista4
                     break;
                 }
             coluna ++;
@@ -87,9 +92,9 @@ void insereNaLista(ListaDuplamenteEncadeada<T>& lista, T elemento) {
     novoNodo->proximo = nullptr;
 
     if (lista.inicio == nullptr) {
-        novoNodo->anterior = nullptr;
+        novoNodo->anterior = lista.fim;
         lista.inicio = novoNodo;
-        lista.fim = novoNodo;
+        lista.fim = nullptr;
     } else {
         novoNodo->anterior = lista.fim;
         lista.fim->proximo = novoNodo;
