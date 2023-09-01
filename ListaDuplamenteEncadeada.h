@@ -136,6 +136,18 @@ int recuperarPosicao(ListaDuplamenteEncadeada<T> lista, T e){
 }
 
 template<typename T>
+bool existeElemento(ListaDuplamenteEncadeada<T> lista, T elemento){
+    Nodo<T>* p = lista.inicio , q = lista.fim;
+    while(p != NULL ){
+        if(p->elemento == elemento || q->elemento == elemento)
+            return true;
+        p= p->proximo;
+        q= q->proximo;
+    }
+    return false;
+}
+
+template<typename T>
 void exibeLista(ListaDuplamenteEncadeada<T> lista)
 {
     for (Nodo<T>* p = lista.inicio; p != NULL; p = p->proximo)
@@ -143,5 +155,18 @@ void exibeLista(ListaDuplamenteEncadeada<T> lista)
     cout << endl;
 }
 
+template<typename T>
+void destroiLista(ListaDuplamenteEncadeada<T> &lista) {
+    Nodo<T>* atual = lista.inicio;
+    while (atual != nullptr) {
+        Nodo<T>* proximo = atual->proximo;
+        delete atual;
+        atual = proximo;
+    }
+
+    lista.cardinalidade = 0;
+    lista.inicio = nullptr;
+    lista.fim = nullptr;
+}
 
 #endif // LISTADUPLAMENTEENCADEADA_H_INCLUDED
