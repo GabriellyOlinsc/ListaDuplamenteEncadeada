@@ -106,7 +106,7 @@ void insereNaLista(ListaDuplamenteEncadeada<T>& lista, T elemento) {
 }
 
 template<typename T>
-int recuperaElemento(ListaDuplamenteEncadeada<T> lista, int posicao) {
+T recuperaElemento(ListaDuplamenteEncadeada<T> lista, int posicao) {
     Nodo<T> *p = lista.inicio, *q = lista.fim;
     int cont = 1, contFim = lista.cardinalidade;
 
@@ -141,8 +141,8 @@ bool existeElemento(ListaDuplamenteEncadeada<T> lista, T elemento){
     while(p != NULL ){
         if(p->elemento == elemento || q->elemento == elemento)
             return true;
-        p= p->proximo;
-        q= q->proximo;
+        p = p->proximo;
+        q = q->proximo;
     }
     return false;
 }
