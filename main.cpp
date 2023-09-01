@@ -16,5 +16,6 @@ int main() {
     insereNaLista(l2, string("FLN"));
     insereNaLista(l3, string("SP"));
     insereNaLista(l4, 3);
+    leituraArquivo(l1, nomeArq);
     return 0;
 }

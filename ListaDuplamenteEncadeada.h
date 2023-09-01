@@ -22,7 +22,8 @@ struct ListaDuplamenteEncadeada{
 };
 template<typename T>
 void leituraArquivo (ListaDuplamenteEncadeada<T> &lista, string nomeArq){
-    T palavra;
+    string palavra;
+    int valor = 0;
     char ch;
     int coluna = 0;
 
@@ -59,7 +60,8 @@ void leituraArquivo (ListaDuplamenteEncadeada<T> &lista, string nomeArq){
             coluna ++;
             if(coluna > 3)
                 coluna = 0;
-            palavra="";
+            palavra = int("");
+
         }else
         palavra = palavra + ch;
     }
@@ -121,6 +123,16 @@ int recuperaElemento(ListaDuplamenteEncadeada<T> lista, int posicao) {
         cont++;
         contFim++;
     }
+}
+template<typename T>
+int recuperarPosicao(ListaDuplamenteEncadeada<T> lista, T e){
+    Nodo<T> *p = lista.inicio;
+    int index = 1;
+    while(p->elemento != e){
+        p=p->proximo;
+        index++;
+    }
+    return index;
 }
 
 template<typename T>
