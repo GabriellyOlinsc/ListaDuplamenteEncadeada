@@ -3,23 +3,41 @@
 
 using namespace std;
 int main() {
-    string nomeArq, palavra = "FLN";
+    string nomeArq, palavra = "RJ";
     cout<<"Informe o nome do arquivo (.txt): ";
     getline(cin,nomeArq);
 
-    ListaDuplamenteEncadeada<string> IDVoo;
+    ListaDuplamenteEncadeada<int>numeroVoo;
+    ListaDuplamenteEncadeada<int> IDVoo;
+    ListaDuplamenteEncadeada<string> localOrigem;
+    ListaDuplamenteEncadeada<string> localDestino;
+
+    criaLista(numeroVoo);
     criaLista(IDVoo);
-    leituraArquivo(IDVoo,nomeArq,2);
+    criaLista(localOrigem);
+    criaLista(localDestino);
+
+    //leituraArquivo(IDVoo,nomeArq);
+    leituraArquivo(localOrigem, nomeArq);
+    leituraArquivo(IDVoo, nomeArq);
+
+    exibeLista(numeroVoo);
     exibeLista(IDVoo);
-    cout<<"Numero de elementos: " <<numeroDeElementos(IDVoo)<<endl;
-    cout<<"EH vazia: "<<ehVazia(IDVoo)<<endl;
-    cout<<"Recupera Elemenrto: "<<recuperaElemento(IDVoo,2)<<endl;
-    cout<<"Existe elemento: "<<existeElemento(IDVoo,palavra)<<endl;
-   // cout<<"Recupera posicao: "<<recuperarPosicao(IDVoo,palavra)<<endl;
+    exibeLista(localOrigem);
+    exibeLista(localDestino);
 
-    destroi(IDVoo);
-    cout<<"EH vazia apos destruicao: "<<ehVazia(IDVoo)<<endl;
+    // cout << recuperaElemento(localOrigem, 1);
 
+    try{
+        recuperarPosicao(localOrigem, palavra);
+    }catch(char const* msg){
+        cout << msg;
+    }
+
+    destroiLista(numeroVoo);
+    destroiLista(IDVoo);
+    destroiLista(localOrigem);
+    destroiLista(localDestino);
 
     return 0;
 }

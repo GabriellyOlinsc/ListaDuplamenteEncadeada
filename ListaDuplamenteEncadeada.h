@@ -20,9 +20,10 @@ struct ListaDuplamenteEncadeada{
     Nodo<T>* inicio;
     Nodo<T>* fim;
 };
+
 template<typename T>
-void leituraArquivo (ListaDuplamenteEncadeada<T> &lista, string nomeArq){
-    string palavra;
+void leituraArquivo (ListaDuplamenteEncadeada<T> lista, string nomeArq){
+    T palavra;
     int valor = 0;
     char ch;
     int coluna = 0;
@@ -60,7 +61,7 @@ void leituraArquivo (ListaDuplamenteEncadeada<T> &lista, string nomeArq){
             coluna ++;
             if(coluna > 3)
                 coluna = 0;
-            palavra = int("");
+            palavra = T();
 
         }else
         palavra = palavra + ch;
@@ -96,7 +97,7 @@ void insereNaLista(ListaDuplamenteEncadeada<T>& lista, T elemento) {
     if (lista.inicio == nullptr) {
         novoNodo->anterior = lista.fim;
         lista.inicio = novoNodo;
-        lista.fim = nullptr;
+        lista.fim = novoNodo;
     } else {
         novoNodo->anterior = lista.fim;
         lista.fim->proximo = novoNodo;
@@ -106,7 +107,7 @@ void insereNaLista(ListaDuplamenteEncadeada<T>& lista, T elemento) {
 }
 
 template<typename T>
-T recuperaElemento(ListaDuplamenteEncadeada<T> lista, int posicao) {
+T recuperaElemento(ListaDuplamenteEncadeada<T> &lista, int posicao) {
     Nodo<T> *p = lista.inicio, *q = lista.fim;
     int cont = 1, contFim = lista.cardinalidade;
 
@@ -128,21 +129,23 @@ template<typename T>
 int recuperarPosicao(ListaDuplamenteEncadeada<T> lista, T e){
     Nodo<T> *p = lista.inicio;
     int index = 1;
-    while(p->elemento != e){
+    while(p != nullptr && p->elemento != e){
         p=p->proximo;
         index++;
     }
+    if(p == nullptr)
+        throw "Elemento nao existe.";
+
     return index;
 }
 
 template<typename T>
 bool existeElemento(ListaDuplamenteEncadeada<T> lista, T elemento){
-    Nodo<T>* p = lista.inicio , q = lista.fim;
-    while(p != NULL ){
-        if(p->elemento == elemento || q->elemento == elemento)
+    Nodo<T>* p = lista.inicio;
+    while(p != NULL){
+        if(p->elemento == elemento)
             return true;
         p = p->proximo;
-        q = q->proximo;
     }
     return false;
 }
@@ -150,9 +153,8 @@ bool existeElemento(ListaDuplamenteEncadeada<T> lista, T elemento){
 template<typename T>
 void exibeLista(ListaDuplamenteEncadeada<T> lista)
 {
-    for (Nodo<T>* p = lista.inicio; p != NULL; p = p->proximo)
+    for (Nodo<T>* p = lista.inicio; p != nullptr; p = p->proximo)
         cout << p->elemento << "\t";
-    cout << endl;
 }
 
 template<typename T>
