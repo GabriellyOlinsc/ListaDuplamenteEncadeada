@@ -26,21 +26,32 @@
 	<cstring>
 	<cstdlib>
 
-<<<<<<< HEAD
+1693528947 D
+
 1694101594 source:c:\users\lais a. nunes\onedrive\documentos\projetos\projectlinkedlist\listaduplamenteencadeada\main.cpp
 	<iostream>
 	"ListaDuplamenteEncadeada.h"
 
 1694115888 c:\users\lais a. nunes\onedrive\documentos\projetos\projectlinkedlist\listaduplamenteencadeada\listaduplamenteencadeada.h
-=======
+
 1694004446 source:c:\users\gabri\onedrive\documentos\ciência da computação\codebloks\periodo 3\github project\listaduplamenteencadeada\main.cpp
 	<iostream>
 	"ListaDuplamenteEncadeada.h"
 
 1694004476 c:\users\gabri\onedrive\documentos\ciência da computação\codebloks\periodo 3\github project\listaduplamenteencadeada\listaduplamenteencadeada.h
->>>>>>> df8b83d24d65c12d597561a20b9554a144529481
+
+1694004476 b83d24d65c12d597561a20b9554a144529481
 	<iostream>
 	<fstream>
 	<cstring>
+	<cstdlib>
+
+1694122159 source:c:\users\gabri\onedrive\documentos\ciência da computação\codebloks\periodo 3\github\listaduplamenteencadeada\main.cpp
+	<iostream>
+	"ListaDuplamenteEncadeada.h"
+
+1694122298 c:\users\gabri\onedrive\documentos\ciência da computação\codebloks\periodo 3\github\listaduplamenteencadeada\listaduplamenteencadeada.h
+	<iostream>
+	<fstream>
 	<cstdlib>
 
