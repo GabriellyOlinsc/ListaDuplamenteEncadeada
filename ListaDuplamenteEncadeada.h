@@ -38,30 +38,34 @@ void leituraArquivo (ListaDuplamenteEncadeada<T> lista, string nomeArq){
         if(ch == ' ' or ch == '\n'){
             switch (coluna){
                 case 0:
-                    cout<<"\n\nnumero de voo : "<<palavra<<endl;
-                    insereNaLista(lista, palavra);
+                    //cout<<"\n\nnumero de voo : "<<palavra<<endl;
+                   // insereNaLista(lista, palavra);
                     // insere lista1
                     break;
                 case 1:
-                    cout<<"local de origem: "<< palavra<<endl;
-                    insereNaLista(lista, palavra);
+                    //cout<<"local de origem: "<< palavra<<endl;
+                    //insereNaLista(lista, palavra);
                     // insere lista2
                     break;
                 case 2:
-                    cout<<"local de destino: "<< palavra<<endl;
+                    //cout<<"local de destino: "<< palavra<<endl;
                     insereNaLista(lista, palavra);
                     // insere lista3
                     break;
                 case 3:
-                    cout<<"numero de lugares disponiveis: "<< palavra<<endl;
-                    insereNaLista(lista, palavra);
+                    //cout<<"numero de lugares disponiveis: "<< palavra<<endl;
+                  //  insereNaLista(lista, palavra);
                     // insere lista4
                     break;
                 }
             coluna ++;
             if(coluna > 3)
                 coluna = 0;
+<<<<<<< HEAD
             palavra = T();
+=======
+            palavra = "";
+>>>>>>> df8b83d24d65c12d597561a20b9554a144529481
 
         }else
         palavra = palavra + ch;
@@ -82,20 +86,32 @@ int numeroDeElementos(ListaDuplamenteEncadeada<T> lista){
 }
 
 template<typename T>
-int ehVazia(ListaDuplamenteEncadeada<T> lista)
+bool ehVazia(ListaDuplamenteEncadeada<T> lista)
 {
     return lista.cardinalidade == 0;
 }
 
 template<typename T>
+bool existeElemento(ListaDuplamenteEncadeada<T> lista, T elemento){
+    Nodo<T> *p = lista.inicio, *q = lista.fim;
+    while(p != NULL)
+    {
+        if(p->elemento == elemento || q->elemento == elemento)
+            return true;
+        p = p->proximo;
+        q = q->anterior;
+    }
+    return false;
+}
+//ARRUMAR E COLOCAR INSERE NA POSICAO
+template<typename T>
 void insereNaLista(ListaDuplamenteEncadeada<T>& lista, T elemento) {
-
     Nodo<T>* novoNodo = new Nodo<T>;
     novoNodo->elemento = elemento;
     novoNodo->proximo = nullptr;
 
     if (lista.inicio == nullptr) {
-        novoNodo->anterior = lista.fim;
+        novoNodo->anterior = nullptr;
         lista.inicio = novoNodo;
         lista.fim = novoNodo;
     } else {
@@ -106,25 +122,29 @@ void insereNaLista(ListaDuplamenteEncadeada<T>& lista, T elemento) {
     lista.cardinalidade++;
 }
 
+//FALTA O RECUPERA POSICAO
+//FALTA O RETIRA ELEMENTO
+
 template<typename T>
 T recuperaElemento(ListaDuplamenteEncadeada<T> &lista, int posicao) {
     Nodo<T> *p = lista.inicio, *q = lista.fim;
     int cont = 1, contFim = lista.cardinalidade;
 
-    if(posicao < 1 || posicao >lista.cardinalidade + 1)
+    if(posicao < 1 || posicao >lista.cardinalidade)
         throw "POSICAO INVALIDA";
 
     while(p != NULL || q != NULL){
         if(cont == posicao)
             return p->elemento;
         if(contFim == posicao)
-            return p->elemento;
+            return q->elemento;
         p = p->proximo;
         q = q->anterior;
         cont++;
-        contFim++;
+        contFim--;
     }
 }
+<<<<<<< HEAD
 template<typename T>
 int recuperarPosicao(ListaDuplamenteEncadeada<T> lista, T e){
     Nodo<T> *p = lista.inicio;
@@ -149,6 +169,8 @@ bool existeElemento(ListaDuplamenteEncadeada<T> lista, T elemento){
     }
     return false;
 }
+=======
+>>>>>>> df8b83d24d65c12d597561a20b9554a144529481
 
 template<typename T>
 void exibeLista(ListaDuplamenteEncadeada<T> lista)
@@ -158,17 +180,17 @@ void exibeLista(ListaDuplamenteEncadeada<T> lista)
 }
 
 template<typename T>
-void destroiLista(ListaDuplamenteEncadeada<T> &lista) {
-    Nodo<T>* atual = lista.inicio;
-    while (atual != nullptr) {
-        Nodo<T>* proximo = atual->proximo;
-        delete atual;
-        atual = proximo;
+void destroi(ListaDuplamenteEncadeada<T> &lista)
+{
+    Nodo<T> *p;
+    while (lista.inicio != NULL)
+    {
+        p = lista.inicio;
+        lista.inicio = lista.inicio->proximo;
+        delete p;
     }
-
     lista.cardinalidade = 0;
-    lista.inicio = nullptr;
-    lista.fim = nullptr;
 }
+
 
 #endif // LISTADUPLAMENTEENCADEADA_H_INCLUDED
