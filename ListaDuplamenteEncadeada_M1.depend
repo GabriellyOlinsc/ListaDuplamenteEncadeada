@@ -46,12 +46,17 @@
 	<cstring>
 	<cstdlib>
 
-1694122159 source:c:\users\gabri\onedrive\documentos\ciência da computação\codebloks\periodo 3\github\listaduplamenteencadeada\main.cpp
+1694389541 source:c:\users\gabri\onedrive\documentos\ciência da computação\codebloks\periodo 3\github\listaduplamenteencadeada\main.cpp
 	<iostream>
 	"ListaDuplamenteEncadeada.h"
+	"Operacoes.h"
 
-1694122298 c:\users\gabri\onedrive\documentos\ciência da computação\codebloks\periodo 3\github\listaduplamenteencadeada\listaduplamenteencadeada.h
+1694389400 c:\users\gabri\onedrive\documentos\ciência da computação\codebloks\periodo 3\github\listaduplamenteencadeada\listaduplamenteencadeada.h
 	<iostream>
+
+1694390024 c:\users\gabri\onedrive\documentos\ciência da computação\codebloks\periodo 3\github\listaduplamenteencadeada\operacoes.h
+	"ListaDuplamenteEncadeada.h"
 	<fstream>
-	<cstdlib>
+	<string>
+	<cctype>
 

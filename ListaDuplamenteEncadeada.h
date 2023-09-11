@@ -1,8 +1,6 @@
 #ifndef LISTADUPLAMENTEENCADEADA_H_INCLUDED
 #define LISTADUPLAMENTEENCADEADA_H_INCLUDED
 #include <iostream>
-#include <fstream>
-#include <cstdlib>
 using namespace std;
 
 template<typename T>
@@ -18,58 +16,6 @@ struct ListaDuplamenteEncadeada{
     Nodo<T>* inicio;
     Nodo<T>* fim;
 };
-
-template<typename T>
-void leituraArquivoString (ListaDuplamenteEncadeada<T> &lista, string nomeArq, int ordemLista){
-    string palavra;
-    char ch;
-    int coluna;
-    ifstream arqSeq(nomeArq.c_str());
-    if(arqSeq.fail()){
-        cout<<"Erro na abertura do arquivo '"<<nomeArq<<"'!";
-        exit(0);}
-
-    while (arqSeq.get(ch)){
-        if(ch == ' ' or ch == '\n'){
-            if(coluna == ordemLista){
-                insereNaLista(lista,palavra,numeroDeElementos(lista)+1);
-            }
-           coluna++;
-           if(coluna > 3) coluna = 0;
-           palavra = "";
-        }else
-            palavra = palavra + ch;
-    }
-    arqSeq.close();
-}
-
-template< typename T>
-void leituraArquivoInt (ListaDuplamenteEncadeada<T> &lista, string nomeArq, int ordemLista){
-    string palavra;
-    char ch;
-    int coluna;
-    T elemento;
-
-    ifstream arqSeq(nomeArq.c_str());
-    if(arqSeq.fail()){
-        cout<<"Erro na abertura do arquivo '"<<nomeArq<<"'!";
-        exit(0);}
-
-    while (arqSeq.get(ch)){
-        if(ch == ' ' or ch == '\n'){
-            if(coluna == ordemLista){
-                elemento = atoi (palavra.c_str());
-                insereNaLista(lista,elemento,numeroDeElementos(lista)+1);
-            }
-           coluna++;
-           if(coluna > 3) coluna = 0;
-           palavra = "";
-        }else
-            palavra = palavra + ch;
-    }
-    arqSeq.close();
-}
-
 
 template<typename T>
 void criaLista (ListaDuplamenteEncadeada<T> &lista){
@@ -141,7 +87,7 @@ void insereNaLista(ListaDuplamenteEncadeada<T>& lista, T elemento, int posicao) 
     lista.cardinalidade++;
 }
 
-//FALTA O RETIRA ELEMENTO
+//retira elemento
 
 template<typename T>
 T recuperaElemento(ListaDuplamenteEncadeada<T> &lista, int posicao) {
@@ -161,47 +107,34 @@ T recuperaElemento(ListaDuplamenteEncadeada<T> &lista, int posicao) {
         cont++;
         contFim--;
     }
+    exit(0);
 }
 
 template<typename T>
 int recuperarPosicao(ListaDuplamenteEncadeada<T> lista, T elemento){
     Nodo<T> *p = lista.inicio, * q = lista.fim;
-    int index = 1, indexFim = lista.cardinalidade;
+    int index = 1, indexFim = lista.cardinalidade, posicao;
 
     if(!existeElemento(lista,elemento)){
         throw "Elemento nao existe!";
     }
     while(p != NULL || q!=NULL){
-        if(p->elemento == elemento)
-            return index;
-        if(p->elemento == elemento)
-            return indexFim;
+        if(p->elemento == elemento){
+            posicao = index; break;
+        }
+        if(q->elemento == elemento){
+            posicao = indexFim; break;
+        }
         q = q->anterior;
         p = p->proximo;
         index++;
         indexFim--;
     }
+    return posicao;
 }
 
-/*
 template<typename T>
-int recuperarPosicao(ListaDuplamenteEncadeada<T> lista, T e){
-    Nodo<T> *p = lista.inicio;
-    int index = 1;
-    while(p != nullptr && p->elemento != e){
-        p=p->proximo;
-        index++;
-    }
-    if(p == nullptr)
-        throw "Elemento nao existe.";
-
-    return index;
-}
-*/
-
-template<typename T>
-void exibeLista(ListaDuplamenteEncadeada<T> lista)
-{
+void exibeLista(ListaDuplamenteEncadeada<T> lista){
     for (Nodo<T>* p = lista.inicio; p != nullptr; p = p->proximo)
         cout << p->elemento << "\t";
     cout<<endl;
