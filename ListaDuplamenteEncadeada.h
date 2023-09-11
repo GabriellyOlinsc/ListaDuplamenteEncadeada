@@ -87,7 +87,41 @@ void insereNaLista(ListaDuplamenteEncadeada<T>& lista, T elemento, int posicao) 
     lista.cardinalidade++;
 }
 
-//retira elemento
+template<typename T>
+void removeElemento(ListaDuplamenteEncadeada<T> &lista, int pos){
+    if(pos < 1 || pos > lista.cardinalidade + 1)
+        throw "POSICAO INVALIDA";
+
+    Nodo<T> *p = lista.inicio;
+    Nodo<T> *removerElemento = NULL;
+
+    if (p != NULL && pos == 1){
+        removerElemento = lista.inicio;
+        lista.inicio = removerElemento->proximo;
+        if (lista.inicio == NULL)
+            lista.fim = NULL;
+        else
+            lista.inicio->anterior = NULL;
+    }else{
+        int cont = 1;
+        while (p != NULL && p->proximo != NULL && cont != pos - 1){
+            p = p->proximo;
+            cont++;
+        }
+        if (p != NULL && p->proximo != NULL){
+            removerElemento = p->proximo;
+            p->proximo = removerElemento->proximo;
+            if (p->proximo == NULL)
+                lista.fim = p;
+            else
+                p->proximo->anterior = p;
+        }
+    }
+    if (removerElemento){
+        delete removerElemento;
+        lista.cardinalidade--;
+    }
+}
 
 template<typename T>
 T recuperaElemento(ListaDuplamenteEncadeada<T> &lista, int posicao) {
@@ -136,7 +170,7 @@ int recuperarPosicao(ListaDuplamenteEncadeada<T> lista, T elemento){
 template<typename T>
 void exibeLista(ListaDuplamenteEncadeada<T> lista){
     for (Nodo<T>* p = lista.inicio; p != nullptr; p = p->proximo)
-        cout << p->elemento << "\t";
+        cout <<" |  "<<p->elemento<<"\t";
     cout<<endl;
 }
 

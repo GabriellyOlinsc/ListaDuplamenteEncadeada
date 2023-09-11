@@ -25,6 +25,7 @@ int main()
 
     system("cls");
 
+
     bool finalizar = false;
     int opcao, posVoo, numAssentos;
     string nome, origem, destino;
@@ -38,10 +39,14 @@ int main()
         system("cls");
         switch(opcao){
             case 1:
-                cout<<"Marcar (+) ou Desmarcar(-) passagem: ";
-                cin.get(marcador);
-                cin.ignore();
-                cout<<"Insira os dados:\nNome: ";
+                cout<<" == GERENCIAMENTO DE PASSAGENS ==\n"<<endl;
+                do{
+                    cout<<"Marcar (+) ou Desmarcar(-) passagem: ";
+                    cin.get(marcador);
+                    cin.ignore();
+                }while(marcador !='+' && marcador != '-');
+
+                cout<<"Nome: ";
                 getline(cin,nome);
                 cout<<"Local de Origem: ";
                 getline(cin,origem);
@@ -55,10 +60,10 @@ int main()
                     posVoo = recuperaPosicaoVooValido(localOrigem,localDestino,origem,destino);
                     if(posVoo > 0){
                         numAssentos = recuperaElemento(assentos,posVoo);
-                        if(numAssentos > 0){
-                            marcador == '+' ? numAssentos--: numAssentos++;
+                        if(numAssentos > 0 || marcador == '-'){
+                            marcador == '+' ? numAssentos-- : numAssentos++;
                             try{
-                                //retiraElemento(assentos,posVoo);    AQUI FICA O RETIRA PARA CONTROLARMOS O NUMERO DE ASSENTOS!!
+                                removeElemento(assentos,posVoo);
                                 insereNaLista(assentos,numAssentos,posVoo);
                             }catch (const char* msg){
                                 cerr<<msg<<endl;
@@ -79,10 +84,16 @@ int main()
 
             break;
             case 2:
-                //EXIBE LISTA - VINICIUS
+               cout<<"================== QUADRO DE VOOS =====================\n\nNumero do Voo:   \t";
+               exibeLista(numeroVoo);
+               cout<<"Local de Origem:\t";
+               exibeLista(localOrigem);
+               cout<<"Local de Destino:\t";
+               exibeLista(localDestino);
+               cout<<"Assentos disponiveis:\t";
+               exibeLista(assentos);
                 break;
             case 3:
-
                 finalizar = true;
                 break;
         }
